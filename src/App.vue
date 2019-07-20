@@ -11,7 +11,8 @@
             </div>
             <br>
             <ol>
-                <li v-for="item in itemList">
+                <li v-for="item in itemList" :class="{checked:item.status}">
+                    <input v-model="item.status" type="checkbox"/>
                     <span>{{item.content}}</span>
                 </li>
             </ol>

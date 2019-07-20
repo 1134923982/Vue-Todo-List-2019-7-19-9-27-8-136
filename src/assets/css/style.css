@@ -1,12 +1,11 @@
-#app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+/*basic style*/
+
+body {
+    font: normal normal 13px/16px "Open Sans", sans-serif;
+    background: #ccc;
 }
-.container {
+
+.container{
     padding: 20px;
     width: 400px;
     margin: 0 auto;
@@ -14,65 +13,58 @@
     background: white;
     border-radius: 5px;
 }
-div {
-    display: block;
-}
-body {
-    font: normal normal 13px/16px "Open Sans", sans-serif;
-    background: #ccc;
-}
 
-.input-text {
+.input-text{
     width: 70%;
 }
 
-input {
-    -webkit-writing-mode: horizontal-tb !important;
-    text-rendering: auto;
-    color: initial;
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    -webkit-appearance: textfield;
-    background-color: white;
-    -webkit-rtl-ordering: logical;
-    cursor: text;
-    margin: 0em;
-    font: 400 13.3333px Arial;
-    padding: 1px 0px;
-    border-width: 2px;
-    border-style: inset;
-    border-color: initial;
-    border-image: initial;
-}
-
-input {
+input{
     padding: 4px 15px 4px 0;
+
 }
 
-#button {
+#button{
     display: inline-block;
-    background-color: #fc999b;
-    color: #ffffff;
+    background-color:#fc999b;
+    color:#ffffff;
     border-radius: 5px;
-    text-align: center;
-    margin-top: 2px;
+    text-align:center;
+    margin-top:2px;
     padding: 5px 15px;
     margin-left: 4px;
+}
+
+#button:hover{
+    cursor: pointer;
+    opacity: .8;
 }
 
 ol {
     padding-left: 20px;
 }
 
-#filters {
+ol li {
+    padding: 5px;color:#000;
+}
+
+ol li span{
+    word-break:break-all;
+    width: 70%;
+}
+
+ol li:nth-child(even){
+    background: #f4ecec;
+}
+
+li:hover{
+    cursor: pointer;
+}
+
+#filters{
     text-align: center;
     margin-bottom: -10px;
     margin-top: 40px;
+
 }
 
 #filters span a {
@@ -82,4 +74,28 @@ ol {
     text-decoration: none;
     border: 1px solid transparent;
     border-radius: 3px;
+}
+
+#filters span a.selected {
+    border-color: rgba(175, 47, 47, 0.2);
+}
+#filters span a.selected, #filters li a:hover {
+    border-color: rgba(175, 47, 47, 0.1);
+}
+
+#filters span {
+    display: inline;
+    margin: 0 0 5px 0;
+    padding: 8px;
+    list-style: none;
+    outline: none;
+}
+
+.checked {
+    color: #999;
+    text-decoration: line-through;
+}
+
+input[type=checkbox].done-todo {
+    margin: 5px 5px 2px 0;
 }
