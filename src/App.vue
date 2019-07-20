@@ -11,8 +11,8 @@
             </div>
             <br>
             <ol>
-                <li v-for="item in itemList" :class="{checked:item.status}">
-                    <input v-model="item.status" type="checkbox"/>
+                <li v-for="(item,index) in itemList" :key="index" :class="{checked:item.status}">
+                    <input v-model="item.status" type="checkbox" @change="changeItemStatus(item,index)"/>
                     <span>{{item.content}}</span>
                 </li>
             </ol>
@@ -45,7 +45,11 @@
                     this.itemList.push(this.item);
                     this.item = {};
                 }
-            }
+            },
+            changeItemStatus:function (item,index) {
+                this.itemList.splice(index,1,item)
+            },
+
         }
     }
 </script>
