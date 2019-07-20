@@ -5,6 +5,19 @@
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
-    background-color: gold;
 }
-
+.container {
+    padding: 20px;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 40px;
+    background: white;
+    border-radius: 5px;
+}
+div {
+    display: block;
+}
+body {
+    font: normal normal 13px/16px "Open Sans", sans-serif;
+    background: #ccc;
+}

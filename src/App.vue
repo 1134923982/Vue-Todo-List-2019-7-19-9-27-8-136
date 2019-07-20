@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div>
+    <div class="container">
       <div>
         <h2>Jquery To Do List</h2>
         <p><em>Simple Todo List with adding and filter by diff status.</em></p>
