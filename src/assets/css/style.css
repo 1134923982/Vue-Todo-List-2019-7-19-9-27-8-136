@@ -79,7 +79,7 @@ li:hover{
 #filters span a.selected {
     border-color: rgba(175, 47, 47, 0.2);
 }
-#filters span a.selected, #filters li a:hover {
+#filters span a.selected, #filters span a:hover {
     border-color: rgba(175, 47, 47, 0.1);
 }
 

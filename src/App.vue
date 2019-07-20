@@ -18,9 +18,9 @@
             </ol>
             <div>
                 <div id="filters">
-                    <span><a>All</a></span>
-                    <span><a>Active</a></span>
-                    <span><a>Complete</a></span>
+                    <span id="all" ><a @click="filterList('all')">All</a></span>
+                    <span id="active"><a @click="filterList('active')">Active</a></span>
+                    <span><a @click="filterList('complete')">Complete</a></span>
                 </div>
             </div>
 
@@ -35,21 +35,41 @@
         data: function () {
             return {
                 item: {},
-                itemList: []
+                itemList: [],
+                allItemList: [],
+                condition: "all"
             }
         },
         methods: {
             add: function () {
                 if (this.item.content) {
                     this.item.status = false;
-                    this.itemList.push(this.item);
+                    this.allItemList.push(this.item);
+                    if(this.condition==="active" || this.condition === "all"){
+                        this.itemList.push(this.item);
+                    }
                     this.item = {};
                 }
             },
             changeItemStatus:function (item,index) {
                 this.itemList.splice(index,1,item)
             },
+            filterList: function (condition){
+                this.condition = condition;
+                if(this.condition==="active"){
+                    this.itemList.splice(0,this.itemList.length);
+                    this.itemList=this.allItemList.filter(item=>item.status===false)
+                }
+                if(this.condition==="complete"){
+                    this.itemList.splice(0,this.itemList.length);
+                    this.itemList=this.allItemList.filter(item=>item.status===true);
 
+                }
+                if(this.condition==="all"){
+                    this.itemList=[];
+                    this.itemList=JSON.parse(JSON.stringify(this.allItemList))
+                }
+            }
         }
     }
 </script>
