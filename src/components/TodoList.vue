@@ -2,21 +2,18 @@
     <div>
         <ol>
             <li v-for="(item,index) in itemList" :key="index" :class="{checked:item.status}">
-                <input v-model="item.status" type="checkbox"/>
-                <span @dblclick="editItem(item,index)">
-                        <span v-if="!item.editable">{{item.content}}</span>
-                        <input v-model="item.content" @blur="save(item,index)"
-                               @keyup.enter="save(item,index)" v-else/>
-                </span>
+<!--                <input v-model="item.status" type="checkbox"/>-->
+                <Item v-bind:item="item"/>
             </li>
         </ol>
     </div>
 </template>
 
 <script>
+    import Item from './Item'
     export default {
         name: 'ItemList',
-        components: {},
+        components: {Item},
         data: function () {
             return {
                 condition: "all",
@@ -30,17 +27,21 @@
             save: function (item) {
                 item.editable = false;
                 this.$store.commit('changeItem',{item:item});
-            }
+            },
+            // changeStatus: function (item) {this.$store.commit('changeItem',{item:item});
+            //     // this.$nextTick(()=>{
+            //     //     this.$store.commit('changeItem',{item:item});
+            //     // })
+            // }
         },
         computed: {
             itemList: function () {
-                if(this.$store.state.condition==='all'){
-                    return this.$store.state.itemList;
-                }else if (this.$store.state.condition==='active'){
+                if (this.$store.state.condition==='active'){
                     return this.$store.state.itemList.filter(item=>item.status===false)
-                } else {
+                } else if(this.$store.state.condition==='complete'){
                     return this.$store.state.itemList.filter(item=>item.status===true)
                 }
+                return this.$store.state.itemList;
             }
         }
     }

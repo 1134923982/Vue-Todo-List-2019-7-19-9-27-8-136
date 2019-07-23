@@ -3,13 +3,17 @@
         <el-header>
             <el-button type="primary" @click="open" style="float: left;margin: 10px">返回</el-button>
             <!--            <el-button style="float: left;margin: 10px">返回</el-button>-->
-            <span class="el-alert--info" style="margin-top: 3px;float: right">用户名：{{name}}</span>
+            <span class="el-alert--info" style="margin-top: 3px;float: right">用户名：{{$store.state.name}}</span>
         </el-header>
         <el-container>
             <el-aside width="200px" height>
-                <el-tag type="success">
-                    <router-link :to="{name:'todoLists'}">todoList</router-link>
-                </el-tag>
+                <el-button type="success" @click="gotoTodoList">
+                    todoList
+                </el-button>
+                <br>
+                <el-button type="success" @click="gotoMyProfile">
+                    MyProfile
+                </el-button>
             </el-aside>
             <el-container>
                 <el-main>
@@ -23,11 +27,10 @@
 </template>
 
 <script>
-    import TodoLists from './TodoLists'
 
     export default {
         name: 'Home',
-        components: {TodoLists},
+        components: {},
         data: function () {
             return {}
         },
@@ -41,12 +44,23 @@
                     this.$router.push({name:'main'})
                 }).catch(() => {
                 });
+            },
+            gotoTodoList:function () {
+                this.$router.push({
+                    name:'todoLists'
+                })
+            },
+            gotoMyProfile: function () {
+                this.$router.push({
+                    name: 'myProfile',
+                    // params: {
+                    //     name:this.name
+                    // }
+                })
             }
         },
-        computed: {
-            name: function () {
-                return this.$route.params.name
-            }
+        mounted() {
+            this.$router.push('/todoLists')
         }
     }
 </script>

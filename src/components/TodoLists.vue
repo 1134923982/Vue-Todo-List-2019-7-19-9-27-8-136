@@ -23,6 +23,9 @@
               subTitle: 'Simple Todo List with adding and filter by diff status.'
           }
         },
+        mounted: function () {
+            this.$store.dispatch("getAllTodoList")
+        },
         components: {AddTodo,TodoList,TabGroup,TodoTitle},
     }
 </script>
