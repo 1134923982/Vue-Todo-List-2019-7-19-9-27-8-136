@@ -19,4 +19,10 @@ const updateItem = (item, callback) => {
     })
 }
 
-export {getTodoItems,addTodoItem,updateItem};
+const deleteItem = (id, callback) => {
+    axios.delete('todos/'+id).then(function (response) {
+        callback(response)
+    })
+}
+
+export {getTodoItems,addTodoItem,updateItem,deleteItem};
